@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { getServerSideProps } from "../assets/Services/fetchData";
+import DataTable from "../assets/components/dataTable";
 
 export default function Home() {
   const [isLoad, setIsLoad] = useState(false);
@@ -13,6 +14,7 @@ export default function Home() {
       const requestData = await getServerSideProps();
       const interestData = await requestData.props.interests;
       setDataFromServer(interestData);
+      console.log(interestData);
       setIsLoad(true);
     };
     interestData();
@@ -35,9 +37,7 @@ export default function Home() {
         <div>
           {isLoad && (
             <>
-              {dataFromServer.map((interest) => (
-                <p key={interest.id}>{interest.name}</p>
-              ))}
+              {dataFromServer.length > 0 ? <DataTable dataFromServer={dataFromServer}></DataTable> : <p>No data returned</p>}
             </>
           )}
         </div>
