@@ -4,21 +4,19 @@ import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { getServerSideProps } from "../assets/Services/fetchData";
 import DataTable from "../assets/components/dataTable";
+import SearchBox from "../assets/components/searchBox";
 
 export default function Home() {
   const [isLoad, setIsLoad] = useState(false);
   const [dataFromServer, setDataFromServer] = useState([]);
+  const [showSearch, setShowSearch] = useState(true);
 
-  useEffect(() => {
-    const interestData = async () => {
-      const requestData = await getServerSideProps();
-      const interestData = await requestData.props.interests;
-      setDataFromServer(interestData);
-      console.log(interestData);
-      setIsLoad(true);
-    };
-    interestData();
-  }, []);
+  const fetchInterestData = async (query) => {
+    const requestData = await getServerSideProps(query);
+    const interestData = await requestData.props.interests;
+    setDataFromServer(interestData);
+    setIsLoad(true);
+  };
 
   return (
     <div className={styles.container}>
@@ -32,12 +30,17 @@ export default function Home() {
         <h1 className={styles.title}>Search for Hidden Facebook Interests</h1>
 
         <p className={styles.description}>
-          Just enter your query into the search box below:
+          Enter your query into the search box:
         </p>
+        <SearchBox fetchInterestData={fetchInterestData}/>
         <div>
           {isLoad && (
             <>
-              {dataFromServer.length > 0 ? <DataTable dataFromServer={dataFromServer}></DataTable> : <p>No data returned</p>}
+              {dataFromServer.length > 0 ? (
+                <DataTable dataFromServer={dataFromServer}></DataTable>
+              ) : (
+                <p>No data returned</p>
+              )}
             </>
           )}
         </div>

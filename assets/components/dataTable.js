@@ -12,14 +12,14 @@ import {
 const DataTable = ({ dataFromServer }) => {
 
   return (
-    <Table variant="simple">
-      <TableCaption>Interests</TableCaption>
+    <Table variant="simple" colorScheme="blue" maxWidth={1200}>
       <Thead>
         <Tr>
-          <Th>Name</Th>
+          <Th>Audience Name</Th>
           <Th>Topic</Th>
           <Th isNumeric>Audience Size Upper</Th>
           <Th isNumeric>Audience Size Lower</Th>
+          <Th>Audience Path</Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -29,6 +29,7 @@ const DataTable = ({ dataFromServer }) => {
           <Td>{interest.topic}</Td>
           <Td isNumeric>{interest.audience_size_upper_bound}</Td>
           <Td isNumeric>{interest.audience_size_lower_bound}</Td>
+          <Td>{interest.path.join(' > ')}</Td>
         </Tr>
         ))}
       </Tbody>    
