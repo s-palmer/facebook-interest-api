@@ -4,11 +4,11 @@ import { useState } from "react";
 import { getServerSideProps } from "../assets/Services/fetchData";
 import DataTable from "../assets/components/dataTable";
 import SearchBox from "../assets/components/searchBox";
+import DownloadButton from '../assets/components/downloadButton'
 
 export default function Home() {
   const [isLoad, setIsLoad] = useState(false);
   const [dataFromServer, setDataFromServer] = useState([]);
-  const [showSearch, setShowSearch] = useState(true);
 
   const fetchInterestData = async (query) => {
     const requestData = await getServerSideProps(query);
@@ -35,7 +35,10 @@ export default function Home() {
           {isLoad && (
             <>
               {dataFromServer.length > 0 ? (
-                <DataTable dataFromServer={dataFromServer}></DataTable>
+                <>
+                <DownloadButton data={dataFromServer}/>
+                <DataTable dataFromServer={dataFromServer}></DataTable> 
+                </>
               ) : (
                 <p>No data returned</p>
               )}
