@@ -16,8 +16,8 @@ const SearchBox = ({ fetchInterestData }) => {
 
   return (
     <>
-      <InputGroup size="md" mt={2} maxWidth={500}>
-        <Input placeholder="Enter query" pr="20" onChange={setQueryChange}/>
+      <InputGroup size="md" mb={5} maxWidth={500}>
+        <Input placeholder="Enter query" onChange={setQueryChange}/>
         <InputRightElement>
           <Button colorScheme="blue" size="sm" width={2} children={<Search2Icon/>} onClick={onSubmit}>
           </Button>

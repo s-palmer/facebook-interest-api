@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getServerSideProps } from "../assets/Services/fetchData";
 import DataTable from "../assets/components/dataTable";
 import SearchBox from "../assets/components/searchBox";
@@ -28,7 +27,6 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Search for Hidden Facebook Interests</h1>
-
         <p className={styles.description}>
           Enter your query into the search box:
         </p>
@@ -46,7 +44,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}></footer>
+      {/* <footer className={styles.footer}></footer> */}
     </div>
   );
 }
