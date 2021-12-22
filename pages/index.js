@@ -9,8 +9,10 @@ import DownloadButton from '../assets/components/downloadButton'
 export default function Home() {
   const [isLoad, setIsLoad] = useState(false);
   const [dataFromServer, setDataFromServer] = useState([]);
+  const [userQuery, setUserQuery] = useState([]);
 
   const fetchInterestData = async (query) => {
+    setUserQuery(query);
     const requestData = await getServerSideProps(query);
     const interestData = await requestData.props.interests;
     setDataFromServer(interestData);
@@ -36,7 +38,7 @@ export default function Home() {
             <>
               {dataFromServer.length > 0 ? (
                 <>
-                <DownloadButton data={dataFromServer}/>
+                <DownloadButton query={userQuery} data={dataFromServer}/>
                 <DataTable dataFromServer={dataFromServer}></DataTable> 
                 </>
               ) : (
