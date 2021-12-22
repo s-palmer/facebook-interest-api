@@ -35,8 +35,8 @@ export default function Home() {
         <div>
           {isLoad && (
             <>
-              {dataFromServer.map((int) => (
-                <p key={int.id}>{int.name}</p>
+              {dataFromServer.map((interest) => (
+                <p key={interest.id}>{interest.name}</p>
               ))}
             </>
           )}
