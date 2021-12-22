@@ -30,8 +30,8 @@ const DataTable = ({ dataFromServer }) => {
             <Tr key={interest.id}>
               <Td textAlign={'center'}>{interest.name}</Td>
               <Td textAlign={'center'}>{interest.topic}</Td>
-              <Td isNumeric textAlign={'center'}>{interest.audience_size_upper_bound}</Td>
-              <Td textAlign={'center'}>{interest.audience_size_lower_bound}</Td>
+              <Td isNumeric textAlign={'center'}>{interest.audience_size_upper_bound.toLocaleString("en-GB")}</Td>
+              <Td textAlign={'center'}>{interest.audience_size_lower_bound.toLocaleString("en-GB")}</Td>
               <Td textAlign={'center'}>{interest.path.join(" > ")}</Td>
             </Tr>
           ))}
