@@ -4,7 +4,7 @@ import { useState } from "react";
 import DataTable from "../assets/components/dataTable";
 import SearchBox from "../assets/components/searchBox";
 import DownloadButton from '../assets/components/downloadButton'
-import { sendPostRequest } from "../assets/services/sendPostRequest";
+import sendPostRequest from '../assets/services/sendPostRequest'
 
 export default function Home() {
   const [isLoad, setIsLoad] = useState(false);
