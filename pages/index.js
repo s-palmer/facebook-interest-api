@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
-import { getServerSideProps } from "../assets/Services/fetchData";
+import { sendPostRequest } from "../assets/services/sendPostRequest"
 import DataTable from "../assets/components/dataTable";
 import SearchBox from "../assets/components/searchBox";
 import DownloadButton from '../assets/components/downloadButton'
@@ -13,9 +13,8 @@ export default function Home() {
 
   const fetchInterestData = async (query) => {
     setUserQuery(query);
-    const requestData = await getServerSideProps(query);
-    const interestData = await requestData.props.interests;
-    setDataFromServer(interestData);
+    const requestData = await sendPostRequest(query);
+    setDataFromServer(requestData);
     setIsLoad(true);
   };
 
