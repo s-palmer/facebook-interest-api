@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const sendPostRequest = async (searchQuery) => {
+export async function sendPostRequest(searchQuery) {
   const postURL = 'https://fb-api-backend.herokuapp.com/search';
   
   const requestOptions = {
@@ -16,5 +16,3 @@ const sendPostRequest = async (searchQuery) => {
   console.log(data.results);
   return data.results;
 };
-
-module.exports = { sendPostRequest };
