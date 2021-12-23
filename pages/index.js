@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
-import { sendPostRequest } from "../assets/services/sendPostRequest";
+import sendPostRequest from "../assets/services/sendPostRequest";
 import DataTable from "../assets/components/dataTable";
 import SearchBox from "../assets/components/searchBox";
 import DownloadButton from '../assets/components/downloadButton'
