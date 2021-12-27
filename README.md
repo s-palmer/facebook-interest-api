@@ -2,7 +2,7 @@
 
 This app allows you to query the Facebook Graph API and search for options available as ad interests for targeted advertising.
 
-# Features to work out:
+## Features being worked on:
 * Select items to export
 * User authentication
 * Styling
