@@ -13,7 +13,7 @@ type Result = {
   "topic": string
 }
 
-const DownloadButton = ({query, data}: {query: string | undefined, data: Array<Result>}) => {
+const DownloadButton = ({query, data}: {query: string, data: Array<Result>}) => {
   return (
     <Button colorScheme="green" size="md" mb={2}>
       <CSVLink data={data} filename={`${query}_search_results.csv`}><DownloadIcon/> Download results as CSV</CSVLink>
