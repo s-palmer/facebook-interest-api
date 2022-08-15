@@ -2,16 +2,25 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   Box,
 } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 
-const DataTable = ({ dataFromServer }) => {
+type Result = {
+  "id": string,
+  "name": string,
+  "audience_size_lower_bound": number,
+  "audience_size_upper_bound": number,
+  "path": string[],
+  "description"?: string,
+  "disambiguation_category": string,
+  "topic": string
+}
+
+const DataTable = ({ dataFromServer }: { dataFromServer: Array<Result>}) => {
   return (
     <Box overflowY="auto" maxHeight="50vh">
       <Table variant="simple" colorScheme="blue" maxWidth={1200} >
@@ -26,7 +35,7 @@ const DataTable = ({ dataFromServer }) => {
         </Thead>
 
         <Tbody>
-          {dataFromServer.map((interest) => (
+          {dataFromServer.map((interest: Result) => (
             <Tr key={interest.id}>
               <Td textAlign={'center'}>{interest.name}</Td>
               <Td textAlign={'center'}>{interest.topic}</Td>

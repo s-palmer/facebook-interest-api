@@ -4,14 +4,27 @@ import { useState } from "react";
 import DataTable from "../assets/components/dataTable";
 import SearchBox from "../assets/components/searchBox";
 import DownloadButton from '../assets/components/downloadButton'
-import sendPostRequest from '../assets/Services/sendPostRequest.js'
+import sendPostRequest from '../assets/Services/sendPostRequest'
+
+type Result = {
+  "id": string,
+  "name": string,
+  "audience_size_lower_bound": number,
+  "audience_size_upper_bound": number,
+  "path": string[],
+  "description"?: string,
+  "disambiguation_category": string,
+  "topic": string
+}
+
+type ResultArray = Array<Result>
 
 export default function Home() {
-  const [isLoad, setIsLoad] = useState(false);
-  const [dataFromServer, setDataFromServer] = useState([]);
-  const [userQuery, setUserQuery] = useState([]);
+  const [isLoad, setIsLoad] = useState<boolean>(false);
+  const [dataFromServer, setDataFromServer] = useState<ResultArray>([]);
+  const [userQuery, setUserQuery] = useState<string>("");
 
-  const fetchInterestData = async (query) => {
+  const fetchInterestData = async (query: string) => {
     setUserQuery(query);
     const requestData = await sendPostRequest(query);
     setDataFromServer(requestData);
